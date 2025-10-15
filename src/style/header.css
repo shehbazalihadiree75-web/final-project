@@ -1,0 +1,29 @@
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: linear-gradient(90deg, #4b6cb7, #182848);
+  color: white;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.nav a {
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: 45px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.active {
+  text-decoration: underline;
+  font-weight: bold;
+}

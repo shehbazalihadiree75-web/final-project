@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>3D House with Three.js</title>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script>
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Create house base (cube)
+      const baseGeometry = new THREE.BoxGeometry(2, 1, 2);
+      const baseMaterial = new THREE.MeshBasicMaterial({ color: 0x8B4513 });
+      const base = new THREE.Mesh(baseGeometry, baseMaterial);
+      scene.add(base);
+
+      // Create roof (pyramid)
+      const roofGeometry = new THREE.ConeGeometry(1.5, 1, 4);
+      const roofMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+      const roof = new THREE.Mesh(roofGeometry, roofMaterial);
+      roof.position.y = 1;
+      roof.rotation.y = Math.PI / 4; // rotate to align with cube
+      scene.add(roof);
+
+      // Camera and lighting
+      camera.position.z = 5;
+
+      // Animate
+      function animate() {
+        requestAnimationFrame(animate);
+        base.rotation.y += 0.01;
+        roof.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      }
+      animate();
+    </script>
+  </body>
+</html>
